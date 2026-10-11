@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Как держать валюту и не держать всё в рублях — Артур Юнусов</title>
+<meta name="description" content="Чек-лист: сколько держать в валюте, где купить без переплаты и 7 способов защитить деньги от слабого рубля. Актуально на октябрь 2026.">
+<meta property="og:title" content="Как держать валюту и не держать всё в рублях"><meta property="og:description" content="Чек-лист: сколько держать в валюте, где купить без переплаты и 7 способов защитить деньги от слабого рубля. Актуально на октябрь 2026."><meta property="og:type" content="article">
+<meta name="theme-color" content="#0A0F14"><meta name="color-scheme" content="dark">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💵</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A0F14;--bg2:#111820;--bg3:#18212B;--line:rgba(160,190,210,.14);--tx:#C9D3DB;--hi:#F2F6F9;--soft:#7F8C97;
+--g:#00D68F;--gs:rgba(0,214,143,.12);--r:#FF4D6A;--rs:rgba(255,77,106,.12);--y:#FFC857;--maxw:660px}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:"Onest",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.58;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:44px 44px;opacity:.35;mask-image:linear-gradient(#000,transparent 60%);-webkit-mask-image:linear-gradient(#000,transparent 60%)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 18px;position:relative}
+a{color:var(--g)}
+b,strong{color:var(--hi);font-weight:700}
+.bar{position:sticky;top:0;z-index:20;background:rgba(10,15,20,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:54px;gap:12px}
+.bar .t{font-size:13px;color:var(--soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar .t b{color:var(--g)}
+.bar .cnt{font:700 13px/1 "Onest",sans-serif;color:var(--bg);background:var(--g);padding:7px 11px;border-radius:999px;white-space:nowrap}
+.prog{height:2px;background:var(--g);width:0;transition:width .25s}
+.hero{padding:44px 0 18px}
+.kick{display:inline-block;font:700 12px/1 "Onest",sans-serif;letter-spacing:.08em;color:var(--g);border:1px solid rgba(0,214,143,.4);background:var(--gs);padding:7px 11px;border-radius:8px;margin-bottom:18px}
+h1{font-weight:800;font-size:clamp(32px,9vw,50px);line-height:1.02;letter-spacing:-.03em;color:var(--hi);margin:0 0 16px}
+h1 span{color:var(--g)}
+.sub{font-size:18px;color:var(--tx);margin:0 0 20px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:13px;color:var(--soft);border:1px solid var(--line);border-radius:999px;padding:6px 12px}
+.tip{background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--y);border-radius:12px;padding:14px 16px;margin:18px 0;font-size:16px}
+.tip.red{border-left-color:var(--r)}
+.tip.green{border-left-color:var(--g)}
+h2{font-weight:800;font-size:clamp(23px,6.2vw,30px);line-height:1.12;letter-spacing:-.02em;color:var(--hi);margin:44px 0 6px}
+h2 .n{color:var(--g);font-size:.62em;display:block;letter-spacing:.06em;margin-bottom:6px}
+.sec-sub{color:var(--soft);margin:0 0 14px;font-size:16px}
+.item{display:flex;gap:14px;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:16px;margin:10px 0;transition:border-color .2s,background .2s}
+.item.done{border-color:rgba(0,214,143,.45);background:linear-gradient(0deg,var(--gs),var(--gs)),var(--bg2)}
+.box{flex:0 0 auto;width:28px;height:28px;border-radius:8px;border:2px solid var(--soft);background:transparent;cursor:pointer;display:grid;place-items:center;margin-top:1px;padding:0}
+.box svg{width:16px;height:16px;opacity:0}
+.item.done .box{background:var(--g);border-color:var(--g)}
+.item.done .box svg{opacity:1}
+.item h3{font-size:17.5px;line-height:1.3;color:var(--hi);margin:0 0 6px;font-weight:700}
+.item p{margin:0 0 8px;font-size:16px}
+.item p:last-child{margin-bottom:0}
+.item ul{margin:4px 0 8px;padding-left:20px;font-size:16px}
+.item li{margin:3px 0}
+.tbl{width:100%;border-collapse:collapse;font-size:14.5px;margin:8px 0 4px}
+.tbl th{text-align:left;color:var(--soft);font-weight:600;font-size:12.5px;padding:6px 6px;border-bottom:1px solid var(--line)}
+.tbl td{padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl td:first-child{color:var(--hi);font-weight:600}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.plus{color:var(--g)} .minus{color:var(--r)}
+.cta{margin:46px 0 18px;border-radius:18px;padding:22px 20px;background:linear-gradient(135deg,rgba(0,214,143,.18),rgba(0,214,143,.04));border:1px solid rgba(0,214,143,.45)}
+.cta h2{margin:0 0 8px}
+.cta p{margin:0 0 16px}
+.btn{display:block;text-align:center;font:800 17px/1 "Onest",sans-serif;color:var(--bg);background:var(--g);padding:16px 18px;border-radius:14px;text-decoration:none;margin:10px 0 0}
+.btn.ghost{background:transparent;color:var(--g);border:1.5px solid var(--g)}
+footer{color:var(--soft);font-size:13px;padding:24px 0 48px;border-top:1px solid var(--line);margin-top:30px}
+footer a{color:var(--soft)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head>
+<body data-key="chk-valuta-v1">
+<header class="bar"><div class="wrap"><div class="t"><b>Чек-лист</b> · Как держать валюту</div><div class="cnt" id="cnt">0 из 0</div></div><div class="prog" id="prog"></div></header>
+<main class="wrap">
+<section class="hero">
+<div class="kick">ЧЕК-ЛИСТ · ОКТЯБРЬ 2026</div>
+<h1>Как держать <span>валюту</span> и не держать всё в рублях</h1>
+<p class="sub">Доллар весной стоил 75, сейчас около 85. Угадать курс не может никто — но можно сделать так, чтобы тебе было всё равно. 12 шагов, отмечай галочками.</p>
+<div class="chips"><span class="chip">12 шагов</span><span class="chip">10 минут</span><span class="chip">без сложных терминов</span></div>
+<div class="tip">Главная мысль: <b>не угадывать курс, а разложить деньги</b>. Часть в рублях — на жизнь и на ставку. Часть в защите от рубля — на случай, если он ослабнет.</div>
+</section>
+<h2><span class="n">ШАГ 1</span>Реши, сколько и зачем</h2>
+<div class="item" id="i1"><button class="box" aria-label="Отметить как сделано"><svg viewBox="0 0 16 16" fill="none" stroke="#0A0F14" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></button><div><h3>Оставь подушку в рублях</h3><p>3–6 месяцев расходов держи в рублях: на вкладе или накопительном счёте. Ты тратишь в рублях — значит, и запас должен быть в рублях.</p></div></div>
+<div class="item" id="i2"><button class="box" aria-label="Отметить как сделано"><svg viewBox="0 0 16 16" fill="none" stroke="#0A0F14" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></button><div><h3>Определи долю «защиты от рубля»</h3><p>Частый ориентир — <b>10–30% сбережений</b>. Больше — если впереди траты в валюте: поездки, учёба детей, переезд, машина из-за границы.</p></div></div>
+<div class="item" id="i3"><button class="box" aria-label="Отметить как сделано"><svg viewBox="0 0 16 16" fill="none" stroke="#0A0F14" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></button><div><h3>Покупай частями, а не на эмоциях</h3><p>Не меняй всё разом. Выбери сумму и покупай её, например, раз в месяц. Так курс усредняется.</p><p>Пример: в марте 2022 доллар у ЦБ был выше 120 ₽, люди стояли в очередях. В конце июня — около 51 ₽. Кто купил всё на пике, потерял больше половины.</p></div></div>
+<h2><span class="n">ШАГ 2</span>Купи без переплаты</h2>
+<div class="item" id="i4"><button class="box" aria-label="Отметить как сделано"><svg viewBox="0 0 16 16" fill="none" stroke="#0A0F14" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></button><div><h3>Юань — дешевле всего на бирже</h3><p>Через приложение брокера юань покупается по биржевому курсу. Обычно это дешевле, чем в банке и тем более в обменнике.</p><p>Доллар и евро с июня 2024 на Мосбирже не торгуются: их продают банки и брокеры по своему курсу.</p></div></div>
+<div class="item" id="i5"><button class="box" aria-label="Отметить как сделано"><svg viewBox="0 0 16 16" fill="none" stroke="#0A0F14" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></button><div><h3>Сравни курс покупки и продажи</h3><p>Разница между ними — твоя переплата. Перед покупкой сравни 2–3 банка и брокера: где разница меньше, там и покупай.</p></div></div>
+<div class="item" id="i6"><button class="box" aria-label="Отметить как сделано"><svg viewBox="0 0 16 16" fill="none" stroke="#0A0F14" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></button><div><h3>Помни про наличные</h3><p>До <b>9 марта 2027</b> наличные доллары и евро со счетов не выдают — только рубли по курсу банка. Исключение: вклады, открытые до 9 марта 2022, — до $10 000 один раз.</p><p>Юани и тенге снимать можно, если они есть в кассе. Наличную валюту держи только на поездки.</p></div></div>
+<h2><span class="n">ШАГ 3</span>Выбери, куда положить</h2>
+<p class="sec-sub">Семь способов. У каждого свои плюсы и минусы — не обязательно использовать все.</p>
+<div class="item" id="i7"><button class="box" aria-label="Отметить как сделано"><svg viewBox="0 0 16 16" fill="none" stroke="#0A0F14" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></button><div><h3>Валютный вклад или счёт</h3><ul><li>Доллары и евро: в крупных банках около <b>0,4–0,6%</b>, в небольших до 4%.</li><li>Юани: в среднем около <b>3%</b>, по акциям до 5–6%.</li><li class="plus">+ Застрахован АСВ до 1,4 млн ₽ (по курсу ЦБ).</li><li class="minus">− Закроешь досрочно — проценты сгорят.</li></ul></div></div>
+<div class="item" id="i8"><button class="box" aria-label="Отметить как сделано"><svg viewBox="0 0 16 16" fill="none" stroke="#0A0F14" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></button><div><h3>Замещающие и валютные облигации</h3><ul><li>Доходность <b>5–9% годовых в валюте</b>.</li><li>Покупаются с обычного брокерского счёта, купоны приходят в рублях по курсу ЦБ.</li><li class="plus">+ Доход выше вклада, есть дата погашения.</li><li class="minus">− Риск компании-эмитента. Номинал часто $1 000, у некоторых выпусков $100.</li></ul></div></div>
+<div class="item" id="i9"><button class="box" aria-label="Отметить как сделано"><svg viewBox="0 0 16 16" fill="none" stroke="#0A0F14" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></button><div><h3>Юаневые ОФЗ</h3><ul><li>Облигации государства в юанях: около <b>6–7,5%</b> в зависимости от срока.</li><li class="plus">+ Заёмщик — государство.</li><li class="minus">− Когда на рынке не хватает юаней, цена может проседать.</li></ul></div></div>
+<div class="item" id="i10"><button class="box" aria-label="Отметить как сделано"><svg viewBox="0 0 16 16" fill="none" stroke="#0A0F14" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></button><div><h3>Валютные фонды (БПИФ)</h3><ul><li>Фонд сам держит валютные облигации или юани. Пай — от десятков рублей.</li><li class="plus">+ Продать можно в любой рабочий день.</li><li class="minus">− Комиссия фонда каждый год, нет гарантии вернуть вложенное.</li></ul></div></div>
+<div class="item" id="i11"><button class="box" aria-label="Отметить как сделано"><svg viewBox="0 0 16 16" fill="none" stroke="#0A0F14" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></button><div><h3>Золото</h3><ul><li>Проще всего — биржевое золото через брокера: без хранения и без НДС.</li><li>Ориентир — <b>5–10%</b> сбережений.</li><li class="minus">− Сильно качается: с января по июль 2026 упало примерно на 27% от пика.</li></ul></div></div>
+<div class="item" id="i12"><button class="box" aria-label="Отметить как сделано"><svg viewBox="0 0 16 16" fill="none" stroke="#0A0F14" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></button><div><h3>Акции экспортёров</h3><ul><li>Компании, которые продают за валюту, выигрывают от слабого рубля и платят дивиденды.</li><li class="minus">− Нужен горизонт от 3 лет. Зависят от цен на сырьё, санкций и решений по дивидендам.</li></ul></div></div>
+<div class="tip red"><b>Криптовалюта и стейблкоины</b> — самый рискованный вариант. С 1 сентября 2026 покупать можно через лицензированных посредников; без статуса квалифицированного инвестора — до 300 000 ₽ в год у одного посредника и после теста. Только деньги, которые не жалко.</div>
+<section class="cta">
+<h2>Хочешь понять, как работают деньги?</h2>
+<p>Играй в «Инвест-старт»: проживи 20 лет на рынке, переживи кризисы и сравни себя с «ленивым инвестором». Бесплатно, в моём Telegram-боте.</p>
+<a class="btn" href="https://t.me/YunusovArtur_bot?start=game">Играть в «Инвест-старт»</a>
+<a class="btn ghost" href="https://t.me/YunusovArtur">Мой канал про деньги</a>
+</section>
+<footer>
+<p>Данные актуальны на октябрь 2026 года.</p>
+<p>Источники: Банк России (валютные ограничения до 09.03.2027, курсы), Мосбиржа, сравнения ставок Brobank/Рамблер (сентябрь 2026), Merkatys (июль 2026), Profile.ru (закон о криптовалюте, июль 2026).</p>
+<p>Это не индивидуальная инвестиционная или юридическая рекомендация. Условия банков, законы и ставки меняются — перед решением проверяйте актуальные данные. Артур Юнусов, <a href="https://t.me/YunusovArtur">t.me/YunusovArtur</a></p>
+</footer>
+</main>
+<script>
+(function(){
+ var KEY=document.body.dataset.key, st={};
+ try{st=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+ var items=[].slice.call(document.querySelectorAll('.item')), cnt=document.getElementById('cnt'), prog=document.getElementById('prog');
+ function upd(){var d=items.filter(function(i){return i.classList.contains('done')}).length;cnt.textContent=d+' из '+items.length;prog.style.width=(d/items.length*100)+'%'}
+ items.forEach(function(it){var id=it.id,b=it.querySelector('.box');if(st[id])it.classList.add('done');b.setAttribute('aria-pressed',st[id]?'true':'false');
+  b.addEventListener('click',function(){var on=!it.classList.contains('done');it.classList.toggle('done',on);b.setAttribute('aria-pressed',on?'true':'false');st[id]=on;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}upd()})});
+ upd();
+})();
+</script>
+</body></html>
