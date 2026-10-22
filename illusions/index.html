@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Мозг врёт: 5 иллюзий — Артур Юнусов</title>
+<meta name="description" content="5 оптических иллюзий, которые ты проверишь на себе за 3 минуты. И что они говорят о том, как ты обращаешься с деньгами.">
+<meta property="og:title" content="Мозг врёт: 5 иллюзий"><meta property="og:description" content="Проверь себя за 3 минуты: сколько раз мозг тебя обманет?"><meta property="og:type" content="website">
+<meta name="theme-color" content="#0A0F14"><meta name="color-scheme" content="dark">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👁</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A0F14;--bg2:#111820;--bg3:#18212B;--line:rgba(160,190,210,.14);--tx:#C9D3DB;--hi:#F2F6F9;--soft:#7F8C97;
+--g:#00D68F;--gs:rgba(0,214,143,.12);--r:#FF4D6A;--rs:rgba(255,77,106,.12);--y:#FFC857;--maxw:620px}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:"Onest",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:44px 44px;opacity:.35;mask-image:linear-gradient(#000,transparent 60%);-webkit-mask-image:linear-gradient(#000,transparent 60%)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 18px;position:relative}
+a{color:var(--g)}
+b,strong{color:var(--hi);font-weight:700}
+.bar{position:sticky;top:0;z-index:20;background:rgba(10,15,20,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:54px;gap:12px}
+.bar .t{font-size:13px;color:var(--soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar .t b{color:var(--g)}
+.bar .cnt{font:700 13px/1 "Onest",sans-serif;color:var(--bg);background:var(--g);padding:7px 11px;border-radius:999px;white-space:nowrap}
+.prog{height:2px;background:var(--g);width:0;transition:width .3s}
+.kick{display:inline-block;font:700 12px/1 "Onest",sans-serif;letter-spacing:.08em;color:var(--g);border:1px solid rgba(0,214,143,.4);background:var(--gs);padding:7px 11px;border-radius:8px;margin-bottom:16px}
+h1{font-weight:800;font-size:clamp(34px,10vw,52px);line-height:1.02;letter-spacing:-.03em;color:var(--hi);margin:0 0 14px}
+h1 span{color:var(--g)}
+h2{font-weight:800;font-size:clamp(24px,6.5vw,30px);line-height:1.1;letter-spacing:-.02em;color:var(--hi);margin:0 0 6px}
+.sub{font-size:18px;margin:0 0 22px}
+.screen{padding:34px 0 60px;display:none}
+.screen.on{display:block;animation:in .35s ease}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:14px;padding:16px 22px;font:700 17px/1.1 "Onest",sans-serif;cursor:pointer;background:var(--g);color:#06110C;text-decoration:none;width:100%}
+.btn.ghost{background:var(--bg3);color:var(--hi);border:1px solid var(--line)}
+.btn:focus-visible,.opt:focus-visible{outline:3px solid var(--y);outline-offset:2px}
+.list{display:grid;gap:10px;margin:0 0 26px;padding:0;list-style:none}
+.list li{display:flex;gap:12px;align-items:center;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.list li i{font-style:normal;font:800 13px/1 "Onest",sans-serif;color:var(--g);min-width:22px}
+.stage{background:var(--bg2);border:1px solid var(--line);border-radius:18px;padding:12px;margin:14px 0 16px;position:relative}
+.stage canvas{display:block;width:100%;height:auto;border-radius:12px;touch-action:manipulation}
+.q{font:700 19px/1.3 "Onest",sans-serif;color:var(--hi);margin:6px 0 12px}
+.opts{display:grid;gap:10px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--bg3);color:var(--hi);border-radius:12px;padding:14px 16px;font:600 16px/1.3 "Onest",sans-serif;cursor:pointer}
+.opt:hover{border-color:rgba(0,214,143,.5)}
+.opt.pick{border-color:var(--g);background:var(--gs)}
+.reveal{display:none;margin-top:16px;gap:12px}
+.reveal.on{display:grid}
+.verdict{border-radius:14px;padding:14px 16px;font:700 17px/1.35 "Onest",sans-serif}
+.verdict.fooled{background:var(--rs);color:#FFC2CC;border:1px solid rgba(255,77,106,.4)}
+.verdict.ok{background:var(--gs);color:#B9F5DD;border:1px solid rgba(0,214,143,.4)}
+.verdict.neutral{background:rgba(255,200,87,.1);color:#FFE3A6;border:1px solid rgba(255,200,87,.35)}
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.card .lbl{display:block;font:700 12px/1 "Onest",sans-serif;letter-spacing:.08em;color:var(--soft);text-transform:uppercase;margin-bottom:8px}
+.card.money{border-color:rgba(0,214,143,.35)}
+.card.money .lbl{color:var(--g)}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.row .btn{flex:1 1 200px}
+.toggle{font:600 14px/1 "Onest",sans-serif;color:var(--hi);background:var(--bg3);border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer}
+.toggle.on{border-color:var(--g);color:var(--g)}
+.hint{font-size:14px;color:var(--soft);margin:8px 0 0}
+.timer{position:absolute;right:22px;top:22px;font:800 15px/1 "Onest",sans-serif;color:#222;background:rgba(255,255,255,.75);border-radius:999px;padding:7px 10px}
+.score{font:800 clamp(60px,20vw,96px)/1 "Onest",sans-serif;color:var(--g);letter-spacing:-.04em;margin:6px 0}
+.res{display:grid;gap:8px;margin:18px 0 22px}
+.res div{display:flex;justify-content:space-between;gap:10px;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:11px 14px;font-size:15px}
+.res span:last-child{font-weight:700;white-space:nowrap}
+.res .f{color:#FF8FA2}.res .k{color:var(--g)}.res .n{color:var(--y)}
+.cta{background:linear-gradient(180deg,rgba(0,214,143,.14),rgba(0,214,143,.04));border:1px solid rgba(0,214,143,.4);border-radius:18px;padding:18px;display:grid;gap:12px;margin:18px 0}
+.foot{font-size:13px;color:var(--soft);margin-top:28px}
+@media (prefers-reduced-motion:reduce){.screen.on{animation:none}}
+</style>
+</head>
+<body>
+<div class="bar"><div class="wrap"><span class="t">Мозг врёт · <b>Артур Юнусов</b></span><span class="cnt" id="cnt">5 иллюзий</span></div><div class="prog" id="prog"></div></div>
+
+<main class="wrap">
+  <!-- intro -->
+  <section class="screen on" id="s-intro">
+    <span class="kick">5 ИЛЛЮЗИЙ · 3 МИНУТЫ</span>
+    <h1>Мозг <span>врёт</span>.<br>Проверь на себе</h1>
+    <p class="sub">Пять картинок, на которых мозг видит то, чего нет. Отвечай честно, как видишь, а потом смотри правду. В конце узнаешь, сколько раз он тебя обманул, и что это говорит о том, как ты обращаешься с деньгами.</p>
+    <ul class="list">
+      <li><i>01</i>Шар, который крутится в обе стороны</li>
+      <li><i>02</i>Две клетки одного цвета</li>
+      <li><i>03</i>Две линии одной длины</li>
+      <li><i>04</i>Два круга одного размера</li>
+      <li><i>05</i>Зелёная точка, которой нет</li>
+    </ul>
+    <button class="btn" id="start" type="button">Начать проверку →</button>
+    <p class="foot">Лучше всего смотреть с телефона, в полный экран, без бликов.</p>
+  </section>
+
+  <!-- 1 sphere -->
+  <section class="screen" id="s-1">
+    <span class="kick">ИЛЛЮЗИЯ 1 ИЗ 5</span>
+    <h2>Куда крутится шар?</h2>
+    <div class="stage"><canvas id="c1" width="520" height="420" aria-label="Шар из точек вращается"></canvas></div>
+    <p class="q">Передние точки шара едут…</p>
+    <div class="opts" data-step="1">
+      <button class="opt" type="button" data-v="right">Вправо →</button>
+      <button class="opt" type="button" data-v="left">← Влево</button>
+      <button class="opt" type="button" data-v="both">Направление меняется само</button>
+    </div>
+    <div class="reveal" id="r1">
+      <div class="verdict neutral">Правильного ответа нет. Картинка одна, а мозг сам решает, где у шара перед, и держится за свою версию.</div>
+      <button class="toggle" id="t1" type="button">Включить подсказку глубины</button>
+      <p class="hint">С подсказкой ближние точки крупнее, и шар крутится вправо. Выключи её, посмотри на одну точку внизу шара и представь, что она едет влево — шар развернётся.</p>
+      <div class="card money"><span class="lbl">Что это значит для денег</span>Один и тот же график кто-то видит обвалом, а кто-то точкой входа. Мозг выбирает версию и потом ищет подтверждения. Перед сделкой спроси себя: что должно случиться, чтобы я был неправ?</div>
+      <button class="btn" type="button" data-next="2">Следующая иллюзия →</button>
+    </div>
+  </section>
+
+  <!-- 2 checker -->
+  <section class="screen" id="s-2">
+    <span class="kick">ИЛЛЮЗИЯ 2 ИЗ 5</span>
+    <h2>Какая клетка темнее?</h2>
+    <div class="stage"><canvas id="c2" width="520" height="520" aria-label="Шахматная доска с тенью, клетки A и B"></canvas></div>
+    <p class="q">Сравни клетки A и B</p>
+    <div class="opts" data-step="2">
+      <button class="opt" type="button" data-v="a">A темнее</button>
+      <button class="opt" type="button" data-v="b">B темнее</button>
+      <button class="opt" type="button" data-v="same">Одинаковые</button>
+    </div>
+    <div class="reveal" id="r2">
+      <div class="verdict" id="v2"></div>
+      <button class="toggle" id="t2" type="button">Соединить клетки полосой</button>
+      <p class="hint">Клетки A и B закрашены одним и тем же серым. Мозг «вычитает» тень и решает, что B на самом деле светлая.</p>
+      <div class="card money"><span class="lbl">Что это значит для денег</span>1 000 ₽ в кофейне кажутся дорогими, а в автосалоне — мелочью. Деньги те же, меняется фон. Оценивай трату в рублях и в часах своей работы, а не на фоне общей суммы.</div>
+      <button class="btn" type="button" data-next="3">Следующая иллюзия →</button>
+    </div>
+  </section>
+
+  <!-- 3 muller-lyer -->
+  <section class="screen" id="s-3">
+    <span class="kick">ИЛЛЮЗИЯ 3 ИЗ 5</span>
+    <h2>Какая линия длиннее?</h2>
+    <div class="stage"><canvas id="c3" width="520" height="340" aria-label="Две линии со стрелками"></canvas></div>
+    <p class="q">Сравни длину горизонтальных линий</p>
+    <div class="opts" data-step="3">
+      <button class="opt" type="button" data-v="top">Верхняя длиннее</button>
+      <button class="opt" type="button" data-v="bottom">Нижняя длиннее</button>
+      <button class="opt" type="button" data-v="same">Одинаковые</button>
+    </div>
+    <div class="reveal" id="r3">
+      <div class="verdict" id="v3"></div>
+      <button class="toggle" id="t3" type="button">Показать линейку</button>
+      <p class="hint">Линии одной длины. Длиннее или короче их делают только «стрелочки» на концах.</p>
+      <div class="card money"><span class="lbl">Что это значит для денег</span>Это работает как перечёркнутая цена: «было 9 990, стало 4 990». Стрелочки скидки делают цену «короче», хотя вещь стоит столько же. Сравнивай с ценой в других магазинах, а не с перечёркнутой.</div>
+      <button class="btn" type="button" data-next="4">Следующая иллюзия →</button>
+    </div>
+  </section>
+
+  <!-- 4 ebbinghaus -->
+  <section class="screen" id="s-4">
+    <span class="kick">ИЛЛЮЗИЯ 4 ИЗ 5</span>
+    <h2>Какой круг больше?</h2>
+    <div class="stage"><canvas id="c4" width="520" height="300" aria-label="Два зелёных круга в окружении других кругов"></canvas></div>
+    <p class="q">Сравни два зелёных круга в центре</p>
+    <div class="opts" data-step="4">
+      <button class="opt" type="button" data-v="left">Левый больше</button>
+      <button class="opt" type="button" data-v="right">Правый больше</button>
+      <button class="opt" type="button" data-v="same">Одинаковые</button>
+    </div>
+    <div class="reveal" id="r4">
+      <div class="verdict" id="v4"></div>
+      <button class="toggle" id="t4" type="button">Убрать соседей</button>
+      <p class="hint">Круги одного размера. Среди больших соседей круг кажется маленьким, среди маленьких — большим.</p>
+      <div class="card money"><span class="lbl">Что это значит для денег</span>Твой доход кажется маленьким, когда вокруг в ленте только «успешные». Сравнивай себя с собой год назад: сколько стало накоплений, а не у кого какая машина.</div>
+      <button class="btn" type="button" data-next="5">Последняя иллюзия →</button>
+    </div>
+  </section>
+
+  <!-- 5 lilac chaser -->
+  <section class="screen" id="s-5">
+    <span class="kick">ИЛЛЮЗИЯ 5 ИЗ 5</span>
+    <h2>Смотри на крестик 20 секунд</h2>
+    <p class="hint" style="margin:0 0 4px">Не отводи взгляд от крестика в центре и не моргай слишком часто.</p>
+    <div class="stage"><canvas id="c5" width="520" height="520" aria-label="Розовые точки по кругу, крестик в центре"></canvas><span class="timer" id="tm5">20</span></div>
+    <button class="btn" id="go5" type="button">Старт: смотрю на крестик</button>
+    <div id="q5" style="display:none">
+      <p class="q">Что ты видел?</p>
+      <div class="opts" data-step="5">
+        <button class="opt" type="button" data-v="green">По кругу бегала зелёная точка</button>
+        <button class="opt" type="button" data-v="fade">Розовые точки исчезали</button>
+        <button class="opt" type="button" data-v="none">Ничего необычного</button>
+      </div>
+    </div>
+    <div class="reveal" id="r5">
+      <div class="verdict" id="v5"></div>
+      <p class="hint">Зелёной точки на экране нет: есть только розовые, и одна по очереди пропадает. Глаз устаёт от розового и дорисовывает дополнительный цвет — зелёный. А неподвижные розовые точки мозг просто перестаёт замечать.</p>
+      <div class="card money"><span class="lbl">Что это значит для денег</span>Когда долго смотришь на одну акцию или одну идею, всё остальное исчезает, а мозг дорисовывает то, чего нет. Раз в месяц смотри на портфель целиком, а не на одну позицию.</div>
+      <button class="btn" type="button" data-next="end">Мой результат →</button>
+    </div>
+  </section>
+
+  <!-- result -->
+  <section class="screen" id="s-end">
+    <span class="kick">РЕЗУЛЬТАТ</span>
+    <h2>Мозг обманул тебя</h2>
+    <div class="score" id="score">0 из 4</div>
+    <p class="sub" id="title" style="margin-bottom:6px"></p>
+    <p class="hint" style="margin:0">Шар не считается: в нём нет правильного ответа.</p>
+    <div class="res" id="res"></div>
+    <div class="cta">
+      <b style="font-size:19px">Мозг обманывает и с деньгами</b>
+      <span>Проверь, как ты поведёшь себя, когда рынок падает: 20 лет инвестиций за 5 минут, кризисы и обвалы. Бесплатная игра «Инвест-старт» в моём Telegram-боте.</span>
+      <a class="btn" href="https://t.me/YunusovArtur_bot?start=game" target="_blank" rel="noopener">Играть в «Инвест-старт» →</a>
+    </div>
+    <div class="row">
+      <button class="btn ghost" id="share" type="button">Отправить другу</button>
+      <button class="btn ghost" id="again" type="button">Пройти ещё раз</button>
+    </div>
+    <p class="foot">Артур Юнусов — объясняю деньги простым языком. Instagram <a href="https://www.instagram.com/artur__yunusov/" target="_blank" rel="noopener">@artur__yunusov</a></p>
+  </section>
+</main>
+
+<script>
+(function(){
+  const $=s=>document.querySelector(s);
+  const DPR=Math.min(window.devicePixelRatio||1,2);
+  const answers={};
+  const ORDER=["intro","1","2","3","4","5","end"];
+  let cur="intro";
+  const reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function show(id){
+    document.querySelectorAll(".screen").forEach(s=>s.classList.remove("on"));
+    $("#s-"+id).classList.add("on");cur=id;
+    const i=ORDER.indexOf(id);
+    $("#prog").style.width=(Math.max(0,i)/(ORDER.length-1)*100)+"%";
+    $("#cnt").textContent=id==="intro"?"5 иллюзий":id==="end"?"Готово":id+" / 5";
+    window.scrollTo({top:0,behavior:reduce?"auto":"smooth"});
+    if(id==="end")result();
+  }
+  function setup(c,h){const w=c.parentElement.clientWidth-24;c.style.width=w+"px";c.style.height=(w*h)+"px";c.width=Math.round(w*DPR);c.height=Math.round(w*h*DPR);const x=c.getContext("2d");x.setTransform(DPR,0,0,DPR,0,0);return{x,w,h:w*h}}
+
+  // ---------- 1. sphere ----------
+  const c1=$("#c1");let depth=false,pts=[];
+  (function(){const N=240,g=Math.PI*(3-Math.sqrt(5));for(let i=0;i<N;i++){const y=1-(i/(N-1))*2,r=Math.sqrt(1-y*y),t=g*i;pts.push([Math.cos(t)*r,y,Math.sin(t)*r])}})();
+  let t1=0,last=0;
+  function draw1(now){
+    if(cur!=="1"){requestAnimationFrame(draw1);return}
+    const {x,w,h}=setup(c1,.8);
+    const dt=last?Math.min(50,now-last):16;last=now;t1+=dt*0.0011;
+    x.fillStyle="#05080B";x.fillRect(0,0,w,h);
+    const R=Math.min(w,h)*.38,cx=w/2,cy=h/2,co=Math.cos(t1),si=Math.sin(t1);
+    for(const p of pts){const X=p[0]*co+p[2]*si,Z=-p[0]*si+p[2]*co;
+      let r=2.6,a=.95;if(depth){r=1.2+2.6*(Z+1)/2;a=.25+.75*(Z+1)/2}
+      x.globalAlpha=a;x.fillStyle="#E8F4EE";x.beginPath();x.arc(cx+X*R,cy-p[1]*R,r*(w/420),0,6.283);x.fill()}
+    x.globalAlpha=1;requestAnimationFrame(draw1)}
+  requestAnimationFrame(draw1);
+  $("#t1").addEventListener("click",e=>{depth=!depth;e.target.classList.toggle("on",depth);e.target.textContent=depth?"Выключить подсказку":"Включить подсказку глубины"});
+
+  // ---------- 2. checker shadow ----------
+  const c2=$("#c2");let bridge=false;
+  function draw2(){
+    const {x,w}=setup(c2,1);const n=5,m=w*.06,cs=(w-2*m)/n;
+    const LIGHT=208,DARK=112,ALPHA=1-DARK/LIGHT;
+    x.fillStyle="#1B232C";x.fillRect(0,0,w,w);
+    for(let r=0;r<n;r++)for(let c=0;c<n;c++){const v=(r+c)%2===0?LIGHT:DARK;x.fillStyle=`rgb(${v},${v},${v})`;x.fillRect(m+c*cs,m+r*cs,cs+.5,cs+.5)}
+    const B=[3,3],A=[0,1];const bx=m+(B[1]+.5)*cs,by=m+(B[0]+.5)*cs;
+    const gr=x.createRadialGradient(bx,by,cs*.9,bx,by,cs*1.9);gr.addColorStop(0,`rgba(0,0,0,${ALPHA})`);gr.addColorStop(1,"rgba(0,0,0,0)");
+    x.save();x.beginPath();x.rect(m,m,cs*n,cs*n);x.clip();x.fillStyle=gr;x.fillRect(m,m,cs*n,cs*n);x.restore();
+    // ball casting the shadow
+    const gx=bx+cs*1.05,gy=by-cs*1.05,gR=cs*.48;const bg=x.createRadialGradient(gx-gR*.35,gy-gR*.35,gR*.1,gx,gy,gR);bg.addColorStop(0,"#7DF3C4");bg.addColorStop(1,"#0B8C5E");
+    x.fillStyle=bg;x.beginPath();x.arc(gx,gy,gR,0,6.283);x.fill();
+    if(bridge){x.fillStyle=`rgb(${DARK},${DARK},${DARK})`;const ax=m+(A[1]+.5)*cs,ay=m+(A[0]+.5)*cs;const bw=cs*.34;
+      x.fillRect(ax-bw/2,ay,bw,by-ay);x.fillRect(Math.min(ax,bx)-bw/2,by-bw/2,Math.abs(bx-ax)+bw,bw)}
+    x.font=`800 ${cs*.34}px Onest,sans-serif`;x.textAlign="center";x.textBaseline="middle";
+    [[A,"A"],[B,"B"]].forEach(([p,l])=>{const px=m+(p[1]+.5)*cs,py=m+(p[0]+.5)*cs;x.fillStyle="rgba(10,15,20,.85)";x.fillText(l,px+1,py+1);x.fillStyle="#FFFFFF";x.fillText(l,px,py)})
+  }
+  $("#t2").addEventListener("click",e=>{bridge=!bridge;e.target.classList.toggle("on",bridge);e.target.textContent=bridge?"Убрать полосу":"Соединить клетки полосой";draw2()});
+
+  // ---------- 3. Müller-Lyer ----------
+  const c3=$("#c3");let ruler=false;
+  function draw3(){
+    const {x,w,h}=setup(c3,.65);x.fillStyle="#05080B";x.fillRect(0,0,w,h);
+    const L=w*.5,x0=(w-L)/2,x1=x0+L,f=w*.09,y1=h*.3,y2=h*.72;x.lineCap="round";x.lineWidth=Math.max(3,w/110);
+    x.strokeStyle=ruler?"#00D68F":"#E8F4EE";
+    x.beginPath();x.moveTo(x0,y1);x.lineTo(x1,y1);x.stroke();
+    x.beginPath();x.moveTo(x0,y2);x.lineTo(x1,y2);x.stroke();
+    x.strokeStyle="#E8F4EE";
+    // top: fins outward (>—<) looks longer
+    x.beginPath();x.moveTo(x0,y1);x.lineTo(x0-f,y1-f*.75);x.moveTo(x0,y1);x.lineTo(x0-f,y1+f*.75);x.moveTo(x1,y1);x.lineTo(x1+f,y1-f*.75);x.moveTo(x1,y1);x.lineTo(x1+f,y1+f*.75);x.stroke();
+    // bottom: fins inward (<—>) looks shorter
+    x.beginPath();x.moveTo(x0,y2);x.lineTo(x0+f,y2-f*.75);x.moveTo(x0,y2);x.lineTo(x0+f,y2+f*.75);x.moveTo(x1,y2);x.lineTo(x1-f,y2-f*.75);x.moveTo(x1,y2);x.lineTo(x1-f,y2+f*.75);x.stroke();
+    if(ruler){x.setLineDash([6,6]);x.lineWidth=2;x.strokeStyle="#FFC857";[x0,x1].forEach(v=>{x.beginPath();x.moveTo(v,h*.08);x.lineTo(v,h*.94);x.stroke()});x.setLineDash([])}
+  }
+  $("#t3").addEventListener("click",e=>{ruler=!ruler;e.target.classList.toggle("on",ruler);e.target.textContent=ruler?"Убрать линейку":"Показать линейку";draw3()});
+
+  // ---------- 4. Ebbinghaus ----------
+  const c4=$("#c4");let alone=false;
+  function draw4(){
+    const {x,w,h}=setup(c4,.58);x.fillStyle="#05080B";x.fillRect(0,0,w,h);
+    const r=w*.045,lc=[w*.27,h/2],rc=[w*.73,h/2];
+    if(!alone){x.fillStyle="#5C6B78";
+      for(let i=0;i<6;i++){const a=i*Math.PI/3,d=r*3.25;x.beginPath();x.arc(lc[0]+Math.cos(a)*d,lc[1]+Math.sin(a)*d,r*1.75,0,6.283);x.fill()}
+      for(let i=0;i<8;i++){const a=i*Math.PI/4,d=r*1.75;x.beginPath();x.arc(rc[0]+Math.cos(a)*d,rc[1]+Math.sin(a)*d,r*.42,0,6.283);x.fill()}}
+    x.fillStyle="#00D68F";[lc,rc].forEach(p=>{x.beginPath();x.arc(p[0],p[1],r,0,6.283);x.fill()});
+    if(alone){x.setLineDash([5,5]);x.strokeStyle="#FFC857";x.lineWidth=2;x.beginPath();x.moveTo(lc[0],lc[1]-r);x.lineTo(rc[0],rc[1]-r);x.moveTo(lc[0],lc[1]+r);x.lineTo(rc[0],rc[1]+r);x.stroke();x.setLineDash([])}
+  }
+  $("#t4").addEventListener("click",e=>{alone=!alone;e.target.classList.toggle("on",alone);e.target.textContent=alone?"Вернуть соседей":"Убрать соседей";draw4()});
+
+  // ---------- 5. lilac chaser ----------
+  const c5=$("#c5");let k5=0,run5=false,tick5=0,left5=20,iv5=null;
+  function draw5(){
+    const {x,w}=setup(c5,1);x.fillStyle="#BDBDBD";x.fillRect(0,0,w,w);
+    const R=w*.36,cx=w/2,cy=w/2,dr=w*.075;
+    for(let i=0;i<12;i++){if(i===k5)continue;const a=i/12*6.283-1.5708,px=cx+Math.cos(a)*R,py=cy+Math.sin(a)*R;
+      const g=x.createRadialGradient(px,py,0,px,py,dr);g.addColorStop(0,"rgba(214,92,214,1)");g.addColorStop(.55,"rgba(214,120,214,.55)");g.addColorStop(1,"rgba(214,140,214,0)");
+      x.fillStyle=g;x.beginPath();x.arc(px,py,dr,0,6.283);x.fill()}
+    x.strokeStyle="#111";x.lineWidth=2.5;const s=w*.025;x.beginPath();x.moveTo(cx-s,cy);x.lineTo(cx+s,cy);x.moveTo(cx,cy-s);x.lineTo(cx,cy+s);x.stroke();
+  }
+  function loop5(now){if(cur==="5"){if(now-tick5>100){tick5=now;k5=(k5+1)%12;draw5()}}requestAnimationFrame(loop5)}
+  requestAnimationFrame(loop5);
+  $("#go5").addEventListener("click",()=>{if(run5)return;run5=true;left5=20;$("#go5").disabled=true;$("#go5").textContent="Смотри на крестик…";$("#tm5").textContent=left5;
+    iv5=setInterval(()=>{left5--;$("#tm5").textContent=Math.max(0,left5);if(left5<=0){clearInterval(iv5);$("#go5").style.display="none";$("#q5").style.display="block";$("#q5").scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"})}},1000)});
+
+  // ---------- answers ----------
+  const RULE={2:"same",3:"same",4:"same"};
+  const FOOLED_TXT={2:"Мозг тебя обманул: клетки одинаковые.",3:"Мозг тебя обманул: линии одинаковые.",4:"Мозг тебя обманул: круги одинаковые."};
+  document.querySelectorAll(".opts").forEach(box=>{const step=box.dataset.step;
+    box.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>{
+      if(answers[step])return;answers[step]=b.dataset.v;b.classList.add("pick");
+      box.querySelectorAll(".opt").forEach(o=>o.disabled=true);
+      const v=$("#v"+step);
+      if(step in RULE){const ok=b.dataset.v===RULE[step];v.className="verdict "+(ok?"ok":"fooled");v.textContent=ok?"Не поддался! Большинство отвечает иначе.":FOOLED_TXT[step];
+        if(step==="2"){bridge=true;$("#t2").classList.add("on");$("#t2").textContent="Убрать полосу";draw2()}
+        if(step==="3"){ruler=true;$("#t3").classList.add("on");$("#t3").textContent="Убрать линейку";draw3()}
+        if(step==="4"){alone=true;$("#t4").classList.add("on");$("#t4").textContent="Вернуть соседей";draw4()}}
+      if(step==="5"){const ok=b.dataset.v==="none";v.className="verdict "+(ok?"ok":"fooled");v.textContent=ok?"Редкий случай: мозг не дорисовал зелёную точку.":"Мозг тебя обманул: зелёной точки не было.";}
+      const r=$("#r"+step);r.classList.add("on");setTimeout(()=>r.scrollIntoView({behavior:reduce?"auto":"smooth",block:"start"}),60);
+    }))});
+  document.querySelectorAll("[data-next]").forEach(b=>b.addEventListener("click",()=>{const n=b.dataset.next;show(n);if(n==="2")draw2();if(n==="3")draw3();if(n==="4")draw4();if(n==="5")draw5()}));
+  $("#start").addEventListener("click",()=>show("1"));
+
+  function result(){
+    const items=[["Шар","1"],["Клетки A и B","2"],["Линии","3"],["Круги","4"],["Зелёная точка","5"]];
+    let fooled=0;const rows=items.map(([n,s])=>{let st,cls;
+      if(s==="1"){st="без ответа";cls="n"}
+      else{const a=answers[s];const ok=s==="5"?a==="none":a===RULE[s];if(!ok)fooled++;st=ok?"не поддался":"обманул";cls=ok?"k":"f"}
+      return `<div><span>${n}</span><span class="${cls}">${st}</span></div>`});
+    $("#res").innerHTML=rows.join("");
+    $("#score").textContent=fooled+" из 4";
+    $("#title").textContent=fooled===0?"Железный аналитик. Но помни: с деньгами мозг хитрее, чем с картинками.":fooled<=2?"Трезвый ум: мозг иногда дорисовывает, но ты умеешь проверять.":"Как у большинства людей — и это нормально. Главное знать, где мозг обманывает, и проверять цифрами.";
+  }
+  $("#again").addEventListener("click",()=>{for(const k in answers)delete answers[k];document.querySelectorAll(".opt").forEach(o=>{o.disabled=false;o.classList.remove("pick")});document.querySelectorAll(".reveal").forEach(r=>r.classList.remove("on"));
+    depth=false;bridge=false;ruler=false;alone=false;["t1","t2","t3","t4"].forEach(i=>$("#"+i).classList.remove("on"));
+    $("#t1").textContent="Включить подсказку глубины";$("#t2").textContent="Соединить клетки полосой";$("#t3").textContent="Показать линейку";$("#t4").textContent="Убрать соседей";
+    run5=false;$("#go5").disabled=false;$("#go5").style.display="";$("#go5").textContent="Старт: смотрю на крестик";$("#q5").style.display="none";$("#tm5").textContent="20";show("1")});
+  $("#share").addEventListener("click",async()=>{const url=location.href.split("#")[0];const text="Проверь себя: 5 иллюзий, мозг врёт 👀";
+    try{if(navigator.share){await navigator.share({title:"Мозг врёт: 5 иллюзий",text,url});return}}catch(e){}
+    try{await navigator.clipboard.writeText(text+" "+url);$("#share").textContent="Ссылка скопирована ✓"}catch(e){$("#share").textContent=url}});
+  window.addEventListener("resize",()=>{if(cur==="2")draw2();if(cur==="3")draw3();if(cur==="4")draw4();if(cur==="5")draw5()});
+})();
+</script>
+</body></html>
