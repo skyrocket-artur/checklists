@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<title>Разложи монеты — игра для детей и родителей</title>
+<meta name="description" content="Головоломка для детей: разложи монеты по копилкам. 15 уровней, без рекламы и покупок.">
+<meta property="og:title" content="Разложи монеты"><meta property="og:description" content="Головоломка для ребёнка: 15 уровней, монеты и копилки. А ты пройдёшь до конца?"><meta property="og:type" content="website">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0A0F14"><meta name="color-scheme" content="dark">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪙</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A0F14;--bg2:#111820;--bg3:#18212B;--line:rgba(160,190,210,.14);--tx:#C9D3DB;--hi:#F2F6F9;--soft:#7F8C97;
+--g:#00D68F;--gs:rgba(0,214,143,.12);--y:#FFC857;--maxw:560px}
+*,*::before,*::after{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:"Onest",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;user-select:none;-webkit-user-select:none}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:44px 44px;opacity:.35;mask-image:linear-gradient(#000,transparent 60%);-webkit-mask-image:linear-gradient(#000,transparent 60%)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 16px;position:relative}
+b,strong{color:var(--hi);font-weight:700}
+.bar{position:sticky;top:0;z-index:20;background:rgba(10,15,20,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:52px;gap:10px}
+.bar .t{font-size:13px;color:var(--soft);white-space:nowrap}
+.bar .t b{color:var(--g)}
+.pill{font:700 13px/1 "Onest",sans-serif;color:var(--bg);background:var(--y);padding:7px 11px;border-radius:999px;white-space:nowrap}
+.kick{display:inline-block;font:700 12px/1 "Onest",sans-serif;letter-spacing:.08em;color:var(--g);border:1px solid rgba(0,214,143,.4);background:var(--gs);padding:7px 11px;border-radius:8px;margin-bottom:14px}
+h1{font-weight:800;font-size:clamp(36px,11vw,54px);line-height:1;letter-spacing:-.03em;color:var(--hi);margin:0 0 14px}
+h1 span{color:var(--y)}
+h2{font-weight:800;font-size:clamp(24px,7vw,30px);line-height:1.1;letter-spacing:-.02em;color:var(--hi);margin:0 0 8px}
+.sub{font-size:18px;margin:0 0 20px}
+.screen{padding:28px 0 56px;display:none}
+.screen.on{display:block;animation:in .3s ease}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:14px;padding:16px 20px;font:700 17px/1.1 "Onest",sans-serif;cursor:pointer;background:var(--g);color:#06110C;text-decoration:none;width:100%}
+.btn.ghost{background:transparent;color:var(--hi);border:1px solid var(--line)}
+.btn.small{padding:11px 14px;font-size:15px;width:auto;flex:1}
+.row{display:flex;gap:10px;margin-top:12px}
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin:16px 0}
+.rules{margin:0;padding-left:20px}.rules li{margin:4px 0}
+.demo{display:flex;gap:8px;margin:6px 0 2px}
+.note{font-size:14px;color:var(--soft)}
+/* game */
+.hud{display:flex;justify-content:space-between;align-items:center;margin:4px 0 6px;font-size:14px;color:var(--soft)}
+.hud b{font-size:15px}
+.msg{min-height:24px;text-align:center;font-weight:700;color:var(--y);font-size:15px;margin:4px 0 6px}
+.board{display:grid;gap:36px 10px;justify-content:center;margin:10px auto 6px;padding:6px 0}
+.tube{width:var(--tw);height:calc(var(--cs)*4 + 34px);border-radius:12px 12px 26px 26px;background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.05));border:2px solid rgba(160,190,210,.28);position:relative;cursor:pointer;display:flex;flex-direction:column-reverse;align-items:center;padding:8px 0 10px;gap:0;transition:transform .15s,border-color .15s,box-shadow .15s;touch-action:manipulation}
+.tube::before{content:"";position:absolute;top:-2px;left:50%;transform:translateX(-50%);width:44%;height:6px;border-radius:0 0 6px 6px;background:rgba(160,190,210,.28)}
+.tube.sel{border-color:var(--y);transform:translateY(-6px);box-shadow:0 10px 24px rgba(255,200,87,.15)}
+.tube.done{border-color:var(--g);box-shadow:0 0 0 3px var(--gs) inset}
+.tube.bad{animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.tube .lbl{position:absolute;bottom:-24px;left:0;right:0;text-align:center;font:700 13px/1 "Onest",sans-serif;color:var(--g);opacity:0;transition:opacity .3s}
+.tube.done .lbl{opacity:1}
+.coin{width:var(--cs);height:var(--cs);border-radius:50%;display:flex;align-items:center;justify-content:center;font:800 calc(var(--cs)*.36)/1 "Onest",sans-serif;color:#0A0F14;position:relative;box-shadow:inset 0 -4px 0 rgba(0,0,0,.22),inset 0 3px 0 rgba(255,255,255,.35);border:2px solid rgba(0,0,0,.25);margin-top:calc(var(--cs)*-.04);transition:transform .15s}
+.coin small{font-size:.62em;margin-left:1px;font-weight:700}
+.tube.sel .coin.top{transform:translateY(-14px)}
+.coin.pop{animation:pop .28s ease}
+@keyframes pop{from{transform:scale(.6)}to{transform:scale(1)}}
+.c1{background:#B8C2CC}.c2{background:#7FD1FF}.c5{background:#B48CFF}.c10{background:#F5C451}.c50{background:#FF8A65}.c100{background:#00D68F}
+.tools{display:flex;gap:10px;margin-top:26px}
+.fact{background:var(--bg2);border:1px solid rgba(255,200,87,.35);border-radius:16px;padding:16px 18px;margin:18px 0}
+.fact .k{font:700 12px/1 "Onest",sans-serif;letter-spacing:.08em;color:var(--y);margin-bottom:8px}
+.big{font-weight:800;font-size:clamp(44px,14vw,64px);line-height:1;color:var(--y);letter-spacing:-.03em;margin:6px 0 6px}
+.cta{background:linear-gradient(160deg,rgba(0,214,143,.14),rgba(0,214,143,.04));border:1px solid rgba(0,214,143,.4);border-radius:18px;padding:18px;margin:22px 0 10px;display:flex;flex-direction:column;gap:10px}
+.cta span{font-size:15px}
+.confetti{position:fixed;inset:0;pointer-events:none;z-index:50}
+.mute{background:none;border:1px solid var(--line);color:var(--soft);border-radius:999px;padding:6px 10px;font:600 12px/1 "Onest",sans-serif;cursor:pointer}
+</style></head>
+<body>
+<div class="bar"><div class="wrap"><div class="t">🪙 <b>Разложи монеты</b></div><div style="display:flex;gap:8px;align-items:center"><button class="mute" id="mute" type="button">🔊</button><div class="pill" id="bank">0 ₽</div></div></div></div>
+
+<main class="wrap">
+  <!-- intro -->
+  <section class="screen on" id="s-intro">
+    <span class="kick">ИГРА ДЛЯ ДЕТЕЙ И РОДИТЕЛЕЙ</span>
+    <h1>Разложи<br><span>монеты</span></h1>
+    <p class="sub">Монеты перепутались. Разложи их по копилкам так, чтобы в каждой лежали одинаковые.</p>
+    <div class="card">
+      <div class="demo" aria-hidden="true"><div class="coin c1" style="--cs:42px">1</div><div class="coin c2" style="--cs:42px">2</div><div class="coin c5" style="--cs:42px">5</div><div class="coin c10" style="--cs:42px">10</div></div>
+      <ol class="rules">
+        <li>Нажми на копилку — верхняя монета поднимется.</li>
+        <li>Нажми на другую копилку — монета перепрыгнет туда.</li>
+        <li>Класть можно только на такую же монету или в пустую копилку.</li>
+        <li>Собрал 4 одинаковые — копилка закрыта, деньги твои.</li>
+      </ol>
+    </div>
+    <button class="btn" id="start" type="button">Играть ▶</button>
+    <div class="row" id="contRow" style="display:none"><button class="btn ghost" id="cont" type="button">Продолжить с уровня 1</button></div>
+    <p class="note" style="margin-top:14px">15 уровней. Без рекламы и покупок. Подходит детям от 4 лет — первые уровни можно пройти вместе.</p>
+  </section>
+
+  <!-- game -->
+  <section class="screen" id="s-game">
+    <div class="hud"><span>Уровень <b id="lvl">1</b> из 15</span><span>Ходов: <b id="moves">0</b></span></div>
+    <div class="msg" id="msg"></div>
+    <div class="board" id="board"></div>
+    <div class="tools">
+      <button class="btn ghost small" id="undo" type="button">↶ Назад</button>
+      <button class="btn ghost small" id="restart" type="button">⟲ Заново</button>
+    </div>
+  </section>
+
+  <!-- level done -->
+  <section class="screen" id="s-win">
+    <span class="kick" id="winKick">УРОВЕНЬ 1 ПРОЙДЕН</span>
+    <h2 id="winTitle">Отлично!</h2>
+    <p class="sub" style="margin-bottom:6px">В копилках: <b id="winSum">0 ₽</b> · ходов: <b id="winMoves">0</b></p>
+    <div class="fact"><div class="k">ПРО ДЕНЬГИ</div><div id="fact"></div></div>
+    <button class="btn" id="next" type="button">Дальше ▶</button>
+  </section>
+
+  <!-- final -->
+  <section class="screen" id="s-end">
+    <span class="kick">ВСЕ 15 УРОВНЕЙ</span>
+    <h2>Ты собрал</h2>
+    <div class="big" id="total">0 ₽</div>
+    <p class="sub" id="endTitle"></p>
+    <div class="cta">
+      <b style="font-size:19px">Хочешь такую же игру для своего ребёнка?</b>
+      <span>Эту игру я сделал через нейросеть за вечер. В бесплатном PDF — промпт, по которому ты соберёшь игру про любимого героя своего ребёнка, без рекламы и покупок.</span>
+      <a class="btn" href="https://t.me/YunusovArtur_bot?start=deti" target="_blank" rel="noopener">Забрать PDF в Telegram →</a>
+    </div>
+    <div class="row">
+      <button class="btn ghost" id="share" type="button">Отправить другу</button>
+      <button class="btn ghost" id="again" type="button">Сыграть ещё раз</button>
+    </div>
+  </section>
+</main>
+<canvas class="confetti" id="cf"></canvas>
+
+<script>
+(()=>{
+const $=s=>document.querySelector(s);
+const CAP=4, LEVELS=15;
+const DEN=[1,2,5,10,50,100];
+// colors per level: 1-3:3, 4-7:4, 8-11:5, 12-15:6 ; empty tubes 2
+const plan=i=>({n:i<3?3:i<7?4:i<11?5:6, e:2});
+const FACTS=[
+ "Копилка — первый банк ребёнка. Пусть она будет прозрачной: так видно, как растут деньги.",
+ "В одном рубле 100 копеек.",
+ "Если откладывать по 10 ₽ каждый день, за год соберётся 3 650 ₽.",
+ "«Хочу» и «надо» — разные вещи. Еда — надо. Пятая машинка — хочу.",
+ "Подождать неделю перед покупкой игрушки — хорошая тренировка. Часто через неделю она уже не нужна.",
+ "Деньги сначала кто-то зарабатывает. Банкомат их не печатает, а только выдаёт то, что лежит на счёте.",
+ "Попробуй три копилки: «трачу», «коплю», «дарю». Каждую монету клади в одну из них.",
+ "Карманные деньги лучше давать в один и тот же день недели. Так проще учиться планировать.",
+ "Сдачу в магазине стоит пересчитать. Это и математика, и внимательность.",
+ "Если положить деньги в банк на вклад, банк немного доплатит за то, что они лежат у него.",
+ "Сравнивай цену за килограмм, а не за упаковку — так видно, что выгоднее.",
+ "Цены со временем растут. Это называется инфляция: на те же деньги через годы можно купить меньше.",
+ "Чем раньше начать копить, тем меньше нужно откладывать каждый месяц.",
+ "Большая цель складывается из маленьких шагов — как копилки в этой игре.",
+ "Самое ценное, что можно дать ребёнку про деньги, — собственный пример."
+];
+// --- seeded rng
+function rng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+// --- solver (DFS with memo) to guarantee solvable levels
+function canPour(t,a,b){const A=t[a],B=t[b];if(a===b||!A.length||B.length>=CAP)return false;const top=A[A.length-1];return !B.length||B[B.length-1]===top}
+function pour(t,a,b){const A=t[a],B=t[b];const top=A[A.length-1];let k=0;while(A.length&&A[A.length-1]===top&&B.length<CAP){B.push(A.pop());k++}return k}
+const solved=t=>t.every(x=>!x.length||(x.length===CAP&&x.every(v=>v===x[0])));
+function key(t){return t.map(x=>x.join(',')).sort().join('|')}
+function solvable(start){
+  const seen=new Set();let budget=200000;
+  const st=[start.map(x=>x.slice())];
+  while(st.length&&budget-->0){
+    const t=st.pop();if(solved(t))return true;
+    const k=key(t);if(seen.has(k))continue;seen.add(k);
+    for(let a=0;a<t.length;a++){const A=t[a];if(!A.length)continue;
+      if(A.length===CAP&&A.every(v=>v===A[0]))continue;
+      for(let b=0;b<t.length;b++){if(!canPour(t,a,b))continue;
+        if(!t[b].length&&A.every(v=>v===A[0]))continue; // pointless move
+        const n=t.map(x=>x.slice());pour(n,a,b);st.push(n)}}
+  }
+  return false;
+}
+function makeLevel(i){
+  const {n,e}=plan(i);let seed=1000+i*97;
+  for(let tries=0;tries<400;tries++){
+    const r=rng(seed++);const coins=[];
+    for(let c=0;c<n;c++)for(let k=0;k<CAP;k++)coins.push(DEN[c]);
+    for(let j=coins.length-1;j>0;j--){const q=Math.floor(r()*(j+1));[coins[j],coins[q]]=[coins[q],coins[j]]}
+    const t=[];for(let c=0;c<n;c++)t.push(coins.slice(c*CAP,c*CAP+CAP));
+    for(let c=0;c<e;c++)t.push([]);
+    // no tube may start complete or with 3 same on top-of-start for variety
+    if(t.some(x=>x.length===CAP&&x.every(v=>v===x[0])))continue;
+    if(solvable(t))return t;
+  }
+  return null;
+}
+const LV=[];for(let i=0;i<LEVELS;i++)LV.push(makeLevel(i));
+// --- storage
+const store={get(k,d){try{const v=localStorage.getItem('coins_'+k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem('coins_'+k,JSON.stringify(v))}catch(e){}}};
+// --- audio
+let muted=store.get('mute',false),ac=null;
+function beep(f,d=.08,type='triangle',v=.08){if(muted)return;try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain();o.type=type;o.frequency.value=f;g.gain.value=v;g.gain.exponentialRampToValueAtTime(.0001,ac.currentTime+d);o.connect(g).connect(ac.destination);o.start();o.stop(ac.currentTime+d)}catch(e){}}
+const buzz=ms=>{try{navigator.vibrate&&navigator.vibrate(ms)}catch(e){}};
+$('#mute').textContent=muted?'🔇':'🔊';
+$('#mute').onclick=()=>{muted=!muted;store.set('mute',muted);$('#mute').textContent=muted?'🔇':'🔊'};
+// --- state
+let level=0,tubes=[],hist=[],sel=-1,moves=0,bank=store.get('bank',0),levelBank=0,closed=new Set(),lastMoved=null;
+const show=id=>{document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id));window.scrollTo(0,0)};
+const fmt=n=>n.toLocaleString('ru-RU')+' ₽';
+function setBank(){$('#bank').textContent=fmt(bank+levelBank)}
+function sizes(){
+  const n=tubes.length,perRow=n<=5?n:Math.ceil(n/2);
+  const W=Math.min(document.querySelector('main').clientWidth-32,528);
+  const tw=Math.max(54,Math.min(78,Math.floor((W-(perRow-1)*10)/perRow)));
+  const cs=Math.min(tw-14,Math.floor((window.innerHeight-360)/(n<=5?4.6:9.8)),58);
+  const b=$('#board');b.style.gridTemplateColumns=`repeat(${perRow},${tw}px)`;b.style.setProperty('--tw',tw+'px');b.style.setProperty('--cs',Math.max(36,cs)+'px');
+}
+function render(){
+  const b=$('#board');b.innerHTML='';
+  tubes.forEach((t,i)=>{
+    const d=document.createElement('div');d.className='tube';d.dataset.i=i;
+    const full=t.length===CAP&&t.every(v=>v===t[0]);
+    if(full)d.classList.add('done');if(i===sel)d.classList.add('sel');
+    t.forEach((v,j)=>{const c=document.createElement('div');c.className='coin c'+v+(j===t.length-1?' top':'');
+      if(lastMoved&&lastMoved.to===i&&j>=t.length-lastMoved.k)c.classList.add('pop');
+      c.innerHTML=v+'<small>₽</small>';d.appendChild(c)});
+    const l=document.createElement('div');l.className='lbl';l.textContent=full?'+'+fmt(t[0]*CAP):'';d.appendChild(l);
+    d.addEventListener('click',()=>tap(i));b.appendChild(d)});
+  $('#moves').textContent=moves;$('#lvl').textContent=level+1;setBank();
+}
+function startLevel(i){
+  level=i;tubes=LV[i].map(x=>x.slice());hist=[];sel=-1;moves=0;levelBank=0;closed=new Set();lastMoved=null;
+  $('#msg').textContent=i===0?'Нажми на копилку с монетой 👆':'';
+  store.set('level',i);sizes();render();show('s-game');
+}
+function tap(i){
+  if(sel<0){if(!tubes[i].length){nudge(i,'Эта копилка пустая');return}
+    if(tubes[i].length===CAP&&tubes[i].every(v=>v===tubes[i][0])){nudge(i,'Эта копилка уже закрыта ✓');return}
+    sel=i;beep(520);$('#msg').textContent=level===0&&moves===0?'Теперь нажми, куда положить 👇':'';render();return}
+  if(i===sel){sel=-1;render();return}
+  if(!canPour(tubes,sel,i)){const why=tubes[i].length>=CAP?'Копилка полная':'Сюда можно только такую же монету';nudge(i,why);sel=-1;render();return}
+  hist.push(tubes.map(x=>x.slice()));
+  const k=pour(tubes,sel,i);moves++;lastMoved={to:i,k};beep(760,.07);buzz(8);
+  const from=sel;sel=-1;$('#msg').textContent='';
+  const t=tubes[i];
+  if(t.length===CAP&&t.every(v=>v===t[0])&&!closed.has(i)){closed.add(i);levelBank+=t[0]*CAP;setTimeout(()=>{beep(988,.12,'sine',.1);setTimeout(()=>beep(1318,.16,'sine',.1),90)},60);$('#msg').textContent='Копилка закрыта: +'+fmt(t[0]*CAP)+' 🎉';buzz(30)}
+  render();
+  if(solved(tubes))setTimeout(win,650);
+}
+function nudge(i,txt){beep(180,.12,'square',.04);$('#msg').textContent=txt;const el=$('#board').children[i];if(el){el.classList.remove('bad');void el.offsetWidth;el.classList.add('bad')}}
+$('#undo').onclick=()=>{if(!hist.length)return;tubes=hist.pop();moves++;sel=-1;lastMoved=null;
+  // recompute closed set & levelBank
+  closed=new Set();levelBank=0;tubes.forEach((t,i)=>{if(t.length===CAP&&t.every(v=>v===t[0])){closed.add(i);levelBank+=t[0]*CAP}});$('#msg').textContent='';render()};
+$('#restart').onclick=()=>startLevel(level);
+const TITLES=['Отлично!','Ловко!','Вот это скорость!','Как настоящий кассир!','Без единой ошибки? Почти!'];
+function win(){
+  bank+=levelBank;levelBank=0;store.set('bank',bank);setBank();confetti();
+  $('#winKick').textContent='УРОВЕНЬ '+(level+1)+' ПРОЙДЕН';
+  $('#winTitle').textContent=TITLES[level%TITLES.length];
+  $('#winSum').textContent=fmt(LV[level].flat().reduce((a,b)=>a+b,0));$('#winMoves').textContent=moves;
+  $('#fact').textContent=FACTS[level];
+  $('#next').textContent=level+1<LEVELS?'Уровень '+(level+2)+' ▶':'Посмотреть итог ▶';
+  store.set('level',Math.min(level+1,LEVELS-1));store.set('maxDone',Math.max(store.get('maxDone',0),level+1));
+  show('s-win');
+}
+$('#next').onclick=()=>{if(level+1<LEVELS)startLevel(level+1);else end()};
+function end(){
+  const total=LV.reduce((s,t)=>s+t.flat().reduce((a,b)=>a+b,0),0);
+  $('#total').textContent=fmt(total);
+  $('#endTitle').textContent='Все монеты разложены по копилкам. Звание: «Главный по копилкам» 🏆';
+  store.set('level',0);show('s-end');confetti();
+}
+$('#again').onclick=()=>{bank=0;store.set('bank',0);store.set('level',0);setBank();startLevel(0)};
+$('#start').onclick=()=>{const l=store.get('level',0);if(l>0){bank=store.get('bank',0)}else{bank=0;store.set('bank',0)}startLevel(l)};
+(function(){const l=store.get('level',0);if(l>0){$('#start').textContent='Продолжить с уровня '+(l+1)+' ▶';$('#contRow').style.display='flex';$('#cont').textContent='Начать сначала';$('#cont').onclick=()=>{bank=0;store.set('bank',0);store.set('level',0);setBank();startLevel(0)}}setBank()})();
+$('#share').onclick=async()=>{const url=location.href.split('#')[0].split('?')[0];const text='Мой ребёнок прошёл «Разложи монеты» до конца. А твой справится?';
+  try{if(navigator.share){await navigator.share({title:'Разложи монеты',text,url});return}}catch(e){return}
+  try{await navigator.clipboard.writeText(text+' '+url);$('#share').textContent='Ссылка скопирована ✓'}catch(e){$('#share').textContent=url}};
+window.addEventListener('resize',()=>{if($('#s-game').classList.contains('on')){sizes()}});
+// confetti
+function confetti(){const c=$('#cf'),x=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const cols=['#F5C451','#00D68F','#7FD1FF','#B48CFF','#FF8A65'];
+  const P=Array.from({length:70},()=>({x:Math.random()*c.width,y:-20-Math.random()*c.height*.3,r:4+Math.random()*5,vx:-1.5+Math.random()*3,vy:2+Math.random()*3,c:cols[Math.random()*cols.length|0]}));
+  let f=0;(function loop(){x.clearRect(0,0,c.width,c.height);P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.05;x.fillStyle=p.c;x.beginPath();x.arc(p.x,p.y,p.r,0,7);x.fill()});if(++f<110)requestAnimationFrame(loop);else x.clearRect(0,0,c.width,c.height)})()}
+window.__coins={LV,solvable,solved,canPour,pour};
+})();
+</script>
+</body></html>
