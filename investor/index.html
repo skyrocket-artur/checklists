@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Какой ты инвестор? — тест за 60 секунд</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+:root{--bg:#0E1110;--card:#161A18;--line:#232926;--tx:#F2F4F3;--mut:#9AA49F;--g:#00D68F;--gd:#07130D}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{background:var(--bg);color:var(--tx);font:16px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;min-height:100%}
+.w{max-width:480px;margin:0 auto;padding:22px 18px 40px;min-height:100vh;display:flex;flex-direction:column}
+.k{font:700 12px/1 ui-monospace,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-bottom:14px}
+h1{font-size:30px;line-height:1.1;font-weight:800;letter-spacing:-.02em;margin-bottom:12px}
+h1 b{color:var(--g)}
+p.s{color:var(--mut);font-size:16px;margin-bottom:22px}
+.btn{display:block;width:100%;border:0;border-radius:16px;padding:17px 18px;font-family:inherit;font-weight:700;font-size:17px;line-height:1.2;cursor:pointer;text-align:center;text-decoration:none}
+.pri{background:var(--g);color:var(--gd)}
+.sec{background:var(--card);color:var(--tx);border:1px solid var(--line);margin-top:10px}
+.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:22px}
+.bar i{display:block;height:100%;background:var(--g);width:0;transition:width .3s}
+.q{font-size:22px;font-weight:800;line-height:1.2;margin-bottom:18px}
+.opt{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);color:var(--tx);border-radius:14px;padding:15px 16px;margin-bottom:10px;font-family:inherit;font-weight:500;font-size:16px;line-height:1.35;cursor:pointer;transition:transform .08s,border-color .15s}
+.opt:active{transform:scale(.98)}
+.opt.on{border-color:var(--g);background:#0f2a20}
+.card{background:linear-gradient(160deg,#173326,#0E1110 70%);border:1px solid #1f4434;border-radius:22px;padding:24px 20px;margin-bottom:16px;text-align:center}
+.emo{font-size:58px;line-height:1;margin-bottom:10px}
+.tn{font-size:28px;font-weight:800;margin-bottom:8px}
+.td{color:#C9CFCC;font-size:16px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:12px}
+.box h3{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--g);margin-bottom:8px}
+.box li{margin:0 0 6px 18px}
+.ft{margin-top:auto;padding-top:22px;color:#5E6A65;font-size:12px;text-align:center}
+.hide{display:none}
+</style></head><body><div class="w" id="app"></div>
+<script>
+const BOT='https://t.me/YunusovArtur_bot';
+const SHARE='https://t.me/YunusovArtur_bot/investor';
+// сегменты: n — новичок, s — копит, i — инвестор, t — трейдер
+const Q=[
+{q:'Что сейчас с твоими деньгами?',a:[['Живу от зарплаты до зарплаты','n',3],['Коплю на карте или вкладе','s',3],['Есть брокерский счёт, покупаю акции или фонды','i',3],['Торгую: бывают сделки на день или неделю','t',3]]},
+{q:'Есть подушка безопасности?',a:[['Нет','n',2],['Меньше чем на 3 месяца','n',1],['На 3–6 месяцев','s',2],['Больше чем на полгода','i',1]]},
+{q:'Твои вложения упали на 20% за месяц. Что делаешь?',a:[['Продаю, пока не стало хуже','s',2],['Ничего, жду','i',1],['Докупаю, раз дёшево','i',2],['Ищу точку, чтобы заработать на движении','t',3]]},
+{q:'Что для тебя важнее всего?',a:[['Разобраться, с чего вообще начать','n',2],['Не потерять то, что накопил','s',2],['Спокойный рост на годы','i',2],['Заработать быстрее рынка','t',2]]},
+{q:'Сколько времени готов уделять деньгам?',a:[['Пока нисколько','n',2],['Раз в месяц пополнить вклад','s',2],['Раз в месяц — разобраться и докупить','i',2],['Каждый день смотрю графики','t',2]]},
+{q:'Какая цель ближе?',a:[['Перестать жить в ноль','n',2],['Чтобы деньги не съедала инфляция','s',2],['Капитал и пассивный доход к пенсии','i',2],['Зарабатывать на движениях рынка','t',2]]}
+];
+const R={
+n:{e:'🧭',name:'Исследователь',d:'Ты в самом начале пути, и это лучший момент: первые правила сэкономят тебе годы и деньги.',tips:['Сначала подушка на 3 месяца, потом инвестиции','Записывай траты хотя бы месяц','Начни с маленькой суммы, а не с «идеи из чата»'],next:'Пройти тест финграмотности',why:'2 минуты — и поймёшь, где у тебя слабое место с деньгами.',slug:'welcome_novice'},
+s:{e:'🛡',name:'Хранитель',d:'Ты умеешь копить, и это редкий навык. Осталось сделать так, чтобы деньги не таяли и не платили лишний налог.',tips:['Проверь, не попадаешь ли ты под налог на проценты по вкладам','Часть подушки держи на накопительном счёте','Облигации — следующий шаг после вклада'],next:'Посчитать налог на вклад',why:'Игра за 3 минуты покажет, сколько заберёт налог с твоих процентов.',slug:'welcome_saver'},
+i:{e:'📈',name:'Стратег',d:'Ты уже инвестируешь и думаешь на годы вперёд. Главное теперь — чтобы портфель подходил именно тебе и пережил падение.',tips:['Держи доли акций и облигаций под свой срок','Докупай по плану, а не по новостям','Раз в год делай ребалансировку'],next:'Пройти «Стратегию инвестора»',why:'Стресс-тест на падение и твой тип портфеля: от Хранителя до Ракеты.',slug:'welcome_investor'},
+t:{e:'⚡️',name:'Охотник за движением',d:'Тебе интересна динамика рынка и быстрые решения. Здесь выигрывает не тот, кто угадывает, а тот, кто держит риск под контролем.',tips:['Риск на сделку — 1–2% депозита','Стоп ставится до входа, а не после','Отдельный счёт под трейдинг, отдельный — под инвестиции'],next:'Сыграть в «Спекулянта»',why:'Игра трейдера: проверишь, сколько ты сам заработаешь на реальных движениях.',slug:'welcome_trader'}
+};
+const tg=window.Telegram&&Telegram.WebApp;
+if(tg){try{tg.ready();tg.expand();tg.setHeaderColor('#0E1110');tg.setBackgroundColor('#0E1110')}catch(e){}}
+const app=document.getElementById('app');let i=0,sc={n:0,s:0,i:0,t:0},first='n';
+function open(u){if(tg&&tg.openTelegramLink&&u.startsWith('https://t.me/')){tg.openTelegramLink(u)}else{location.href=u}}
+function start(){app.innerHTML=`<div class="k">Тест · 60 секунд</div><h1>Какой ты <b>инвестор</b>?</h1><p class="s">6 вопросов о том, как ты обращаешься с деньгами. В конце — твой тип и один следующий шаг, который подходит именно тебе.</p><div class="box"><h3>Внутри</h3><ul><li>4 типа: Исследователь, Хранитель, Стратег, Охотник за движением</li><li>3 совета под твой тип</li><li>Бесплатный следующий шаг в боте</li></ul></div><button class="btn pri" id="go">Начать</button><div class="ft">© Артур Юнусов · Skyrocket · Не является инвестиционной рекомендацией</div>`;document.getElementById('go').onclick=()=>{i=0;sc={n:0,s:0,i:0,t:0};ask()}}
+function ask(){const x=Q[i];app.innerHTML=`<div class="k">Вопрос ${i+1} из ${Q.length}</div><div class="bar"><i style="width:${i/Q.length*100}%"></i></div><div class="q">${x.q}</div>`+x.a.map((o,j)=>`<button class="opt" data-j="${j}">${o[0]}</button>`).join('');app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{b.classList.add('on');const o=x.a[+b.dataset.j];sc[o[1]]+=o[2];if(i===0)first=o[1];if(tg&&tg.HapticFeedback)try{tg.HapticFeedback.selectionChanged()}catch(e){};setTimeout(()=>{i++;i<Q.length?ask():res()},180)})}
+function res(){let best=first,m=-1;for(const k of ['n','s','i','t']){if(sc[k]>m||(sc[k]===m&&k===first)){m=sc[k];best=k}}const r=R[best];try{localStorage.setItem('investor_type',best)}catch(e){}
+const shareTxt=encodeURIComponent(`Я прошёл тест «Какой ты инвестор?» — я ${r.name} ${r.e}. А ты?`);
+app.innerHTML=`<div class="k">Твой результат</div><div class="card"><div class="emo">${r.e}</div><div class="tn">${r.name}</div><div class="td">${r.d}</div></div><div class="box"><h3>3 совета для тебя</h3><ul>${r.tips.map(t=>`<li>${t}</li>`).join('')}</ul></div><div class="box"><h3>Твой следующий шаг</h3><div>${r.why}</div></div><button class="btn pri" id="nx">${r.next} →</button><button class="btn sec" id="sh">Отправить тест другу 📲</button><button class="btn sec" id="re">Пройти заново</button><div class="ft">© Артур Юнусов · Skyrocket · Не является инвестиционной рекомендацией</div>`;
+document.getElementById('nx').onclick=()=>open(BOT+'?start='+r.slug);
+document.getElementById('sh').onclick=()=>open('https://t.me/share/url?url='+encodeURIComponent(SHARE)+'&text='+shareTxt);
+document.getElementById('re').onclick=start;}
+start();
+</script></body></html>
