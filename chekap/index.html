@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ru"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Чекап портфеля за 60 секунд</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+:root{--bg:#0E1110;--card:#161A18;--line:#232926;--tx:#F2F4F3;--mut:#9AA49F;--g:#00D68F;--gd:#07130D;--r:#FF6B6B}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{background:var(--bg);color:var(--tx);font:16px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;min-height:100%}
+.w{max-width:480px;margin:0 auto;padding:22px 18px 40px;min-height:100vh;display:flex;flex-direction:column}
+.k{font:700 12px/1 ui-monospace,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-bottom:14px}
+h1{font-size:28px;line-height:1.12;font-weight:800;letter-spacing:-.02em;margin-bottom:12px}
+h1 b,.g{color:var(--g)}
+p.s{color:var(--mut);margin-bottom:20px}
+.btn{display:block;width:100%;border:0;border-radius:16px;padding:16px 18px;font-family:inherit;font-weight:700;font-size:17px;line-height:1.2;cursor:pointer;text-align:center;text-decoration:none}
+.pri{background:var(--g);color:var(--gd)}
+.sec{background:var(--card);color:var(--tx);border:1px solid var(--line);margin-top:10px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:12px}
+.box h3{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--g);margin-bottom:8px}
+.box li{margin:0 0 6px 18px}
+label.f{display:block;font-size:14px;color:var(--mut);margin:12px 0 6px}
+input[type=number],input[type=text],select{width:100%;background:#0b0e0d;border:1px solid var(--line);color:var(--tx);border-radius:12px;padding:13px 14px;font:600 17px/1.2 inherit;font-family:inherit}
+input:focus,select:focus{outline:none;border-color:var(--g)}
+.seg{display:flex;gap:8px;flex-wrap:wrap}
+.seg button{flex:1;min-width:70px;background:#0b0e0d;border:1px solid var(--line);color:var(--tx);border-radius:12px;padding:12px 8px;font-family:inherit;font-weight:600;font-size:15px;cursor:pointer}
+.seg button.on{border-color:var(--g);background:#0f2a20;color:var(--g)}
+.big{font-size:38px;font-weight:800;letter-spacing:-.02em;color:var(--g);margin:6px 0}
+.row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.row b{white-space:nowrap}
+.note{font-size:12px;color:#6E7A75;margin-top:8px}
+.ft{margin-top:auto;padding-top:22px;color:#5E6A65;font-size:12px;text-align:center}
+.opt{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);color:var(--tx);border-radius:14px;padding:15px 16px;margin-bottom:10px;font-family:inherit;font-weight:500;font-size:16px;line-height:1.35;cursor:pointer}
+.opt.ok{border-color:var(--g);background:#0f2a20} .opt.no{border-color:var(--r);background:#2a1414}
+.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:20px}
+.bar i{display:block;height:100%;background:var(--g)}
+
+</style></head><body><div class="w" id="app">
+<div class="k">Чекап · 60 секунд</div>
+<h1>Чекап <b>портфеля</b></h1>
+<p class="s">Укажи примерные доли — покажу оценку и 3 вещи, на которые стоит посмотреть.</p>
+<label class="f">Акции и фонды акций, %</label><input type="number" id="a" value="50" inputmode="numeric">
+<label class="f">Облигации, %</label><input type="number" id="b" value="20" inputmode="numeric">
+<label class="f">Вклады и деньги на счёте, %</label><input type="number" id="c" value="20" inputmode="numeric">
+<label class="f">Валюта и золото, %</label><input type="number" id="v" value="10" inputmode="numeric">
+<label class="f">Криптовалюта, %</label><input type="number" id="k" value="0" inputmode="numeric">
+<label class="f">Сколько отдельных компаний в акциях?</label><div class="seg" id="n"><button data-v="1">1–3</button><button data-v="2">4–9</button><button data-v="3" class="on">10+ или фонд</button></div>
+<label class="f">Когда понадобятся эти деньги?</label><div class="seg" id="t"><button data-v="1">до 3 лет</button><button data-v="2" class="on">3–7 лет</button><button data-v="3">7+ лет</button></div>
+<label class="f">Есть подушка на 3–6 месяцев отдельно?</label><div class="seg" id="p"><button data-v="1" class="on">Да</button><button data-v="0">Нет</button></div>
+<button class="btn pri" id="go" style="margin-top:18px">Проверить</button>
+<div id="out"></div><div class="ft">© Артур Юнусов · Skyrocket · Не является инвестиционной рекомендацией</div></div>
+<script>
+const BOT='https://t.me/YunusovArtur_bot';
+const tg=window.Telegram&&Telegram.WebApp;
+if(tg){try{tg.ready();tg.expand();tg.setHeaderColor('#0E1110');tg.setBackgroundColor('#0E1110')}catch(e){}}
+function go(u){if(tg&&tg.openTelegramLink&&u.startsWith('https://t.me/')){tg.openTelegramLink(u)}else{location.href=u}}
+function rub(x){return Math.round(x).toLocaleString('ru-RU').replace(/,/g,' ')+' ₽'}
+function share(slug,text){go('https://t.me/share/url?url='+encodeURIComponent(BOT+'?start='+slug)+'&text='+encodeURIComponent(text))}
+
+let n=3,t=2,p=1;function seg(id,cb){document.querySelectorAll('#'+id+' button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#'+id+' button').forEach(x=>x.classList.remove('on'));b.classList.add('on');cb(+b.dataset.v)})}
+seg('n',x=>n=x);seg('t',x=>t=x);seg('p',x=>p=x);
+document.getElementById('go').onclick=()=>{const g=id=>Math.max(0,+document.getElementById(id).value||0);let A=g('a'),B=g('b'),C=g('c'),V=g('v'),K=g('k');const s=A+B+C+V+K||1;[A,B,C,V,K]=[A,B,C,V,K].map(x=>x*100/s);
+let sc=100,r=[];const add=(pen,txt)=>{sc-=pen;r.push([pen,txt])};
+if(!p)add(25,'Нет подушки. Если понадобятся деньги, придётся продавать в неудачный момент. Сначала 3–6 месяцев расходов на накопительном счёте.');
+if(t===1&&A>40)add(20,'Деньги нужны в ближайшие годы, а акций '+Math.round(A)+'%. Акции могут упасть на 30–50% и не успеть восстановиться.');
+if(t===3&&A<30)add(10,'Срок длинный, а акций всего '+Math.round(A)+'%. Если спокойно переносишь падения, на 7+ лет обычно держат больше акций.');
+if(n===1&&A>20)add(20,'Всего 1–3 компании. Одна неудача сильно ударит по всему портфелю. Фонд на индекс решает это одной покупкой.');
+if(n===2&&A>40)add(8,'4–9 компаний — уже лучше, но отрасли могут повторяться. Проверь, не всё ли в одном секторе.');
+if(K>10)add(15,'Крипты '+Math.round(K)+'%. Это самый волатильный актив: обычно её держат в пределах 5–10%.');
+if(C>50&&t>1)add(12,'Больше половины в деньгах и вкладах при сроке от 3 лет. Ставки упадут — доход упадёт тоже.');
+if(B<5&&t<3)add(8,'Почти нет облигаций. Они смягчают падения и дают понятный доход по купонам.');
+if(V<1)add(5,'Нет валюты и золота. Небольшая доля защищает от резкого ослабления рубля.');
+sc=Math.max(10,Math.round(sc));r.sort((x,y)=>y[0]-x[0]);const top=r.slice(0,3);
+const tag=sc>=85?'Крепкий портфель':sc>=65?'Неплохо, есть что подправить':'Стоит пересобрать';
+document.getElementById('out').innerHTML='<div class="box" style="margin-top:18px;text-align:center"><h3>Оценка</h3><div class="big">'+sc+' / 100</div><div style="font-weight:800;font-size:19px">'+tag+'</div></div><div class="box"><h3>'+(top.length?'На что посмотреть':'Замечаний нет')+'</h3><ul>'+(top.length?top.map(x=>'<li>'+x[1]+'</li>').join(''):'<li>Доли выглядят сбалансированно под твой срок. Раз в год делай ребалансировку.</li>')+'</ul><div class="note">Это ориентиры для самопроверки, а не индивидуальная рекомендация.</div></div><button class="btn pri" id="sh">Отправить другу 📲</button><a class="btn sec" href="https://t.me/YunusovArtur">Разборы портфелей — в моём канале</a>';
+document.getElementById('sh').onclick=()=>share('chekap_share','Проверил свой портфель за 60 секунд — у меня '+sc+' из 100. Проверь свой:');document.getElementById('out').scrollIntoView({behavior:'smooth'});};
+
+</script></body></html>
